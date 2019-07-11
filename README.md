@@ -1,2 +1,2 @@
-# Scripts of graphs made for Matemáticamente posible
+# Scripts for graphs made for Matemáticamente posible
 - Facebook page
