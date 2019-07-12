@@ -41,7 +41,6 @@ puntos <- c(3,3,3,3,3,6,7,8,8,11,14)
 tabla2014 <- matrix(c(partidos,puntos,eliminatoria14), ncol = 3, dimnames = list(c(), c("partidos","puntos", "eliminatoria")))
 tabla2014
 
-t2018
 
 tablaf <- rbind(t2018,tabla2014)
 tablaf
