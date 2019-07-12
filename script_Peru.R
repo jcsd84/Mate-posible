@@ -67,8 +67,6 @@ eliminatoria98 <- rep(2,11)
 tabla98 <- matrix(c(partidos,puntos98, eliminatoria98), ncol = 3, dimnames = list(c(),c("partidos","puntos", "eliminatoria")))
 tabla98
 
-tablaf <- 
-
 tablaf1 <- rbind(t2018,tabla2014, tabla98)
 tablaf1
 
@@ -106,13 +104,13 @@ plot(partidos,difquinto, type = "l", lty = "dashed", main = "Peru 2018: Distanci
      xlab = "Partidos", ylab = "Distancia en puntos", col = "red")
 lines(lowess(partidos,difquinto), col = "blue")
 
-########## Proporción de puntos ganados ########
-# Perú
-#6 partidos local: Ganó 2, empató 2 y perdió 2. (Perú) (8/18 puntos posibles)
+########## Proporci?n de puntos ganados ########
+# Per?
+#6 partidos local: Gan? 2, empat? 2 y perdi? 2. (Per?) (8/18 puntos posibles)
 
 #Brasil
-# Ganó 5, empató 1 y perdió (16/18 puntos)
+# Gan? 5, empat? 1 y perdi? (16/18 puntos)
 
 #Argentina
 
-# Ganó 3, empató 1 y perdió 1 (10/15 puntos)
+# Gan? 3, empat? 1 y perdi? 1 (10/15 puntos)
