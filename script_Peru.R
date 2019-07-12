@@ -43,7 +43,7 @@ tabla2014
 
 
 tablaf <- rbind(t2018,tabla2014)
-tablaf
+
 tablafdf <- data.frame(tablaf)
 tablafdf <- NA
 tablafdf 
