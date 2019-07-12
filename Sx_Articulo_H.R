@@ -10,10 +10,7 @@ list.files()
 
 data <- read.csv2("Conmebol_partidos.csv", sep = ",")
 
-head(data)
-names(data)
 
-str(data)
 
 cor.test(data$pases, data$disparo_afuera)
 cor.test(data$pases, data$disparo_arco)
