@@ -1,0 +1,38 @@
+¿Sabían que una de las razones por las que llegamos al mundial fue porque la selección utilizó data para entender cuál era el mejor juego de Perú?
+Gracias al manejo de data, en los últimos 2 años, la selección peruana de fútbol ha logrado algo nunca antes visto en la historia del fútbol peruano. Además de clasificar al mundial y llegar a la final de la Copa América, también consiguió hitos que ayudaron a que esos logros pasen. Por ejemplo, Perú le ganó por primera vez en la historia en eliminatorias a Paraguay y Ecuador en sus propios países.
+¿Y qué hubo de diferente en estos dos partidos? No es que ocurrió algo mágico con respecto a la mentalidad de los jugadores.
+En realidad, Perú cambió la forma de jugar. La data nos mostró que, entre otras cosas, Perú intentó ser más certero con sus pases y patear más veces al arco que partidos pasados, lo cual hizo que metiera más goles que sus contrincantes. El entrenador se percató de que tener en cuenta este tipo de información podía ayudarlo a tomar decisiones que lo ayuden a mejorar su estrategia de juego.
+Como ven, el uso de data puede traer resultados sorprendentes como estos. Por ejemplo, con data podemos saber qué zonas del Perú son más peligrosas y a qué hora no debemos estar en ellas. Con data, spotify puede conocer qué música podría gustarnos incluso si nosotros nunca hemos escuchado ese grupo musical. Y así como estos ejemplos, hay muchos más que pueden ser sumamente beneficiosos es por esto que les quiero contar la importancia de la data.
+Ya pero, ¿Qué es la data? Eso va a depender a quién le preguntes y para qué la necesitas.
+En general, existen dos tipos de data. La estructurada y la no estructurada.
+La estructurada,  son por ejemplo, cuadros en donde tienes información numérica sobre tus gastos, cuánto gastas cuando sales con tus amigos a comer o al cine.
+Un tipo de data no estructurada, son las imágenes de los scanners que se hacen para ver tumores, o las líneas que tienen las huellas de los dedos que permiten desbloquear el celular.
+
+Como quizás ya se dieron cuenta, soy un apasionado de la data, pero esto no siempre fue así, a mi no es que el manejo de la data y los números me ha sido fácil, alguna vez desaprobé matemáticas en el colegio o me quedé dormido en clase de estadística de la universidad.
+Sin embargo, siempre me pareció increíble que con datos se puedan responder preguntas del mundo como por ejemplo, Por qué algunas personas son más felices que otras? Por qué Perú se demoró 36 años para volver al mundial? Y por eso es que decidí esforzarme y aprender del tema.
+Además de esto, soy fanático del fútbol. Siempre me pareció fascinante entender cómo es que era el juego, qué jugadas eran las necesarias para que un equipo meta un gol. Pero como buen peruano apasionado por este deporte, veía los partidos, sufría con las derrotas y me alegraba con los triunfos. Pero desde que era pequeño regresaba esta pregunta a la cabeza, Por qué Perú no puede ir al mundial?
+Después de tantos años de mucha frustración con promesas vacías de entrenadores y resultados adversos, comencé a preguntarme si la respuesta estaba más en la data que en la opinión de la prensa o en mi propia opinión de por qué nos iba mal.
+
+Y tratando de buscar la respuesta usé lo que me apasionaba, decidí usar la data como herramienta para así buscar respuestas. Así es como surgió Matemáticamente posible. Un espacio que busca ver el fútbol con data y no solo con la opinión o la intuición. Es una invitación a tener una mirada más crítica del fútbol, con data y no caer en la mera opinión poco fundamentada.
+
+Me pasé varias horas buscando en internet alguna fuente que sea confiable, en otras palabras un lugar donde sepa que los datos son reales. Así, comencé a sacar la información de las páginas web de la Confederación Sudamericana de Fútbol (CONMEBOL) y ordenarla, limpiarla de tal forma que se pueda analizar para obtener los datos que comenté.  Este proceso no es fácil y requiere de mucho esfuerzo para conseguirla, pero sí está.
+
+Con la data que recopilé y analicé encontré resultados que me sorprendieron. “¿sabían que Perú tuvo que reducir la cantidad de pases por partidos para meter más goles y conseguir mejores resultados?”
+
+En partidos previos, Perú pensaba que mientras más compartía la pelota entre sus jugadores, es decir, más pases daba, iban a tener más posibilidad de meter goles y ganar el partido. Pero, la data demostró todo lo contrario, que dar muchos pases no traía buenos resultados y bajaban las posibilidades de meter un gol.
+
+Entonces Gareca el entrenador de la selección peruana, decidió hacer que Perú de menos pases entre sus jugadores, que intente patear más tiros al arco e impida que su rival lo ataque tanto. Entonces, con data el entrenador decidió cambiar de estrategia para poder obtener los resultados esperados. Como ya sabemos, el cambio de estrategia funcionó, Perú empezó a ganar más partidos y conseguir resultados que nos llevaron tanto al Mundial como a la final de la Copa América.
+
+En este caso, el entrenador se enfocó en data para conseguir los resultados que esperaba, no se quedó en una opinión como “Los jugadores no quieren jugar por el equipo” o “A veces se juega bien y a veces se juega mal”. ¡Por favor! ¡Los jugadores son profesionales y siempre mencionan que su sueño es representar a nuestro país! Este tipo de comentarios son dañinos y peligrosos, porque nos lleva a tomar una opinión como un hecho, nos desvía y nos lleva a conclusiones equivocadas. El comentario sin data es solo una opinión y no un hecho, si queremos encontrar hechos siempre podemos remitirnos a pruebas para convencernos.
+
+En sí, yo utilicé la data para intentar responder por qué nos era tan difícil ir al mundial, pero este es un ejemplo de las múltiples utilidades que puede tener la data.
+A lo largo de los años la data nos ha ayudado a descubrir por ejemplo que la forma de vivir o estilo de vida es más importante que la genética para que una persona pueda tener un ataque al corazón. Si tenemos dos personas que tuvieron padres que fallecieron de un ataque al corazón y una de ellas siempre come huevo frito, plátano frito, tocino y nunca hace deporte tiene más probabilidad de sufrir un ataque al corazón que una persona, que come 5 frutas y verduras todos los días y hace deporte por lo menos 3 veces por semana.
+Así como yo pude entender más el fútbol con data, tú puedes usarla para tomar decisiones para resolver las dificultades del día a día, como el tráfico de nuestra ciudad.
+
+Quizás en esta presentación han podido sentir que la palabra data se ha repetido varias veces (poner word cloud) este gráfico muestra una nube de palabras para ver cuál fueron las que más se repitieron dentro de esta presentación. Las palabras más grandes son las que más se repiten y la más pequeñas las que menos.
+
+Claramente podemos ver que la que más se repitió fue data. Entonces nuestra sensación pudo ser confirmada.
+
+Ahora yo los invito a ustedes, a usar la data, si alguien les da su opinión,  cuestiónense, busquen data en internet o en libros, no se queden solo con esa opinión. Creo que si todos hacemos esto tendremos un mejor país.
+
+Quiero pensar que es matemáticamente posible
