@@ -27,7 +27,7 @@ data_resumida <- data %>%
 
 # Grafica resumen
 
-ggplot(data_resumida, aes(x=Pases, y=Goles, label=Equipo))+
+Ggeneral <- ggplot(data_resumida, aes(x=Pases, y=Goles, label=Equipo))+
   geom_point(color="red")+
   geom_text_repel(
     nudge_y      = 0.05,
@@ -59,7 +59,7 @@ data_resumida16 <- data_1_6 %>%
 ### graficar del 1-6
 
 
-ggplot(data_resumida16, aes(x=Pases, y=Goles, label=Equipo))+
+G16 <- ggplot(data_resumida16, aes(x=Pases, y=Goles, label=Equipo))+
   geom_point(color="red")+
   geom_text_repel(
     nudge_y      = 0.05,
@@ -90,7 +90,7 @@ data_resumida712 <- data_7_12 %>%
 
 ### graficar del 7-12
 
-ggplot(data_resumida712, aes(x=Pases, y=Goles, label=Equipo))+
+G712 <- ggplot(data_resumida712, aes(x=Pases, y=Goles, label=Equipo))+
   geom_point(color="red")+
   geom_text_repel(
     nudge_y      = 0.05,
@@ -122,7 +122,7 @@ data_resumida1318 <- data_13_18 %>%
 ### Graficar 13-18
 
 
-ggplot(data_resumida1318, aes(x=Pases, y=Goles, label=Equipo))+
+G1318 <- ggplot(data_resumida1318, aes(x=Pases, y=Goles, label=Equipo))+
   geom_point(color="red")+
   geom_text_repel(
     nudge_y      = 0.05,
@@ -140,5 +140,12 @@ ggplot(data_resumida1318, aes(x=Pases, y=Goles, label=Equipo))+
 ### Juntar los 4 graficos
 
 
+figure1 <- ggarrange(Ggeneral, G16, G712, G1318,
+                     labels = c("1", "2",
+                                "3", "4"),
+                     ncol = 2, nrow = 2)
 
+ggsave("WC_qualifiers_2018_pas_goals.png", plot =figure1,
+       width = 10, height = 10, 
+       limitsize = F)
 
