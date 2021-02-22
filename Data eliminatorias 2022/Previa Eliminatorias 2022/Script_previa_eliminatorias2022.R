@@ -4,6 +4,7 @@ library(data.table)
 library(ggplot2)
 library(dplyr)
 library(ggrepel)
+library(ggpubr)
 
 ## Cargar data
 data <- fread("/Users/home/Documents/Documentos/Mate Posible/Matematicamente posible 2018/Conmebol_partidos.csv")
@@ -16,6 +17,30 @@ tail(data)
 m1 <- lm(score_equipo ~ pases, data=data)
 summary(m1)
 
+cor.test(data$score_equipo, data$pases)
+cor.test(data$recuperaciones, data$pases)
+
+# Encajarlo con Peru
+data_Peru <- data %>% 
+  filter(season != "REPECHAJE",
+         Equipo == "PERU")
+
+cor.test(data_Peru[1:6,]$score_equipo, data_Peru[1:6,]$pases) #Relacion 1-6
+cor.test(data_Peru[7:12,]$score_equipo, data_Peru[7:12,]$pases) #Relacion 13-18
+cor.test(data_Peru[13:18,]$score_equipo, data_Peru[13:18,]$pases) #Relacion 7-12
+
+cor.test(data_Peru[1:6,]$recuperaciones, data_Peru[1:6,]$pases) #Relacion 1-6
+cor.test(data_Peru[7:12,]$recuperaciones, data_Peru[7:12,]$pases) #Relacion 13-18
+cor.test(data_Peru[13:18,]$recuperaciones, data_Peru[13:18,]$pases) #Relacion 7-12
+
+
+data_Peru[1:6,]
+data_Peru[7:12,]
+data_Peru[13:18,]
+
+m0 <- lm(score_equipo ~ pases, data=data_Peru)
+summary(m0)
+
 ### Resumen general de relacion pases y goles
 
 data_resumida <- data %>% 
@@ -24,6 +49,8 @@ data_resumida <- data %>%
   summarise(Pases = mean(pases),
             Goles = mean(score_equipo))
 
+# Agregado por equipo
+cor.test(data_resumida$Goles, data_resumida$Pases)
 
 # Grafica resumen
 
@@ -38,7 +65,7 @@ Ggeneral <- ggplot(data_resumida, aes(x=Pases, y=Goles, label=Equipo))+
     size = 2
   )+
   theme(panel.background = element_blank())+
-  scale_x_continuous(limits = c(100, 450), breaks = seq(100,450, by =50))+
+  scale_x_continuous(limits = c(100, 500), breaks = seq(100,500, by =50))+
   scale_y_continuous(limits = c(0,4), breaks = seq(0,5, by = 1))+
   labs(title = "Partidos del 1 al 18")
 
@@ -70,7 +97,7 @@ G16 <- ggplot(data_resumida16, aes(x=Pases, y=Goles, label=Equipo))+
     size = 2
   )+
   theme(panel.background = element_blank())+
-  scale_x_continuous(limits = c(100, 450), breaks = seq(100,450, by =50))+
+  scale_x_continuous(limits = c(100, 500), breaks = seq(100,500, by =50))+
   scale_y_continuous(limits = c(0,3), breaks = seq(0,3, by = 1))+
   labs(title = "Partidos del 1 al 6")
 
