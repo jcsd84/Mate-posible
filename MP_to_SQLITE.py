@@ -25,11 +25,12 @@ data_mp = pd.DataFrame(data_mp, columns=['Torneo','ANHO',
 
 data_mp.to_sql('mateposible_info', conn, if_exists='replace', index=True)
 
+
 #cur.execute('SELECT AVG(Goles_Peru) FROM mateposible_info')
 #cur.execute('''SELECT AVG(Goles_Peru) FROM mateposible_info WHERE Resultado_g2_e1_p0 = '2'''')
 #cur.execute('''SELECT AVG(Goles_Peru) FROM mateposible_info GROUP BY Resultado_g2_e1_p0''')
 #cur.execute('SELECT ROUND(AVG(Goles_Peru),2) FROM mateposible_info GROUP BY Torneo')
-cur.execute('SELECT Torneo, ROUND(AVG(Goles_Peru),2) FROM mateposible_info GROUP BY Torneo')
+#cur.execute('SELECT Torneo, ROUND(AVG(Goles_Peru),2) FROM mateposible_info GROUP BY Torneo')
 
 
 
