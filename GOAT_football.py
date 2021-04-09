@@ -24,7 +24,7 @@ sns.lineplot(x = "Anho", y = "Prop_Goles_Partido",
              data=data_goat_Liga, hue="Jugador")
 plt.legend(bbox_to_anchor=(1.01, 1),borderaxespad=0)
 plt.xlabel("")
-plt.ylabel('Proporcion de goles por temporada en Liga')
+plt.ylabel('Proporcion de goles por partido en Liga')
 plt.xticks(rotation=45)
 plt.show()
 
@@ -32,7 +32,7 @@ sns.lineplot(x = "Anho", y = "Prop_asistencias_Partido",
              data=data_goat_Liga, hue="Jugador")
 plt.legend(bbox_to_anchor=(1.01, 1),borderaxespad=0)
 plt.xlabel("")
-plt.ylabel('Proporcion de asistencias por temporada en Liga')
+plt.ylabel('Proporcion de asistencias por partido en Liga')
 plt.xticks(rotation=45)
 plt.show()
 
