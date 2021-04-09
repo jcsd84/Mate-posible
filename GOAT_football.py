@@ -14,8 +14,20 @@ data_goat = pd.read_csv('/Users/home/Documents/MP blog 2021/Pele_maradona_Messi.
 
 data_goat.to_sql('GOAT', conn, if_exists= 'replace', index=True)
 
-cur.execute('SELECT Jugador, AVG(Goles) FROM GOAT GROUP BY Jugador')
-cur.execute('SELECT Jugador, AVG(Asistencia) FROM GOAT GROUP BY Jugador')
+cur.execute('ALTER TABLE GOAT ADD Prop_Goles_Partido int')
+cur.execute('UPDATE GOAT SET Prop_Goles_Partido = COALESCE(Goles,0)/COALESCE(Partidos,0)')
+
+
+#cur.execute('SELECT Jugador, AVG(Goles) FROM GOAT GROUP BY Jugador')
+#cur.execute('SELECT Jugador, AVG(Asistencia) FROM GOAT GROUP BY Jugador')
+#cur.execute('SELECT Jugador, Certamen, ROUND(AVG(Goles),2) FROM GOAT GROUP BY Jugador, Certamen')
+#cur.execute('SELECT Jugador, Certamen, ROUND(AVG(Asistencia),2) FROM GOAT GROUP BY Jugador, Certamen')
+#cur.execute('SELECT Jugador, Equipo, ROUND(AVG(Goles),2) FROM GOAT GROUP BY Jugador, Equipo')
+#cur.execute('SELECT Jugador, Equipo, ROUND(AVG(Goles),2) FROM GOAT WHERE Certamen = "Mundial" GROUP BY Jugador, Equipo')
+#cur.execute('SELECT Jugador, Equipo, SUM(Goles) FROM GOAT WHERE Certamen = "Mundial" GROUP BY Jugador, Equipo')
+#cur.execute('SELECT Jugador, Equipo, SUM(Asistencia) FROM GOAT WHERE Certamen = "Mundial" GROUP BY Jugador, Equipo')
+cur.execute('SELECT Jugador, AVG(Prop_Goles_Partido) FROM GOAT GROUP BY Jugador')
+
 
 for row in cur.fetchall():
     print(row)
