@@ -38,9 +38,9 @@ plt.savefig('GOAT_goals_season.png')
 #plt.show()
 
 
-data_goat.to_sql('GOAT', conn, if_exists= 'replace', index=True)
+#data_goat.to_sql('GOAT', conn, if_exists= 'replace', index=True)
 
-cur.execute('SELECT Jugador, Certamen, Equipo FROM GOAT GROUP BY Jugador, Certamen, Equipo')
+#cur.execute('SELECT Jugador, Certamen, Equipo FROM GOAT GROUP BY Jugador, Certamen, Equipo')
 #cur.execute('SELECT Jugador, SUM(Partidos), SUM(Goles), SUM(Asistencia) FROM GOAT GROUP BY Jugador')
 #cur.execute('SELECT Jugador, SUM(Partidos), SUM(Goles), SUM(Asistencia) FROM GOAT WHERE Certamen = "Mundial" GROUP BY Jugador')
 #cur.execute('SELECT Jugador, SUM(Partidos), SUM(Goles), SUM(Asistencia) FROM GOAT WHERE Certamen = "Copa America" GROUP BY Jugador')
