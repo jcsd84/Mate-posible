@@ -31,14 +31,42 @@ data_UEFA_semi.to_sql('SEMIUCL', conn, if_exists= 'replace', index = True)
 
 # Calcular equipos con mayor promedio de pases, goles, remates y faltas.
 
-#cur.execute('SELECT Equipo, AVG(Score), AVG(Pases) AS Pass,  AVG(Remate), AVG(Remate_arco), AVG(Faltas) FROM SEMIUCL GROUP BY Equipo ORDER BY Pass DESC')
+#cur.execute('SELECT Equipo, AVG(Score), AVG(Pases),  AVG(Remate), AVG(Remate_arco), AVG(Faltas) FROM SEMIUCL GROUP BY Equipo ORDER BY AVG(Pases) DESC')
 #cur.execute('SELECT Equipo, AVG(Pases), AVG(Remate) AS rem, AVG(Remate_arco) FROM SEMIUCL GROUP BY Equipo ORDER BY rem DESC')
+cur.execute('SELECT Equipo, SUM(Score), SUM(Remate), SUM(Remate_arco), SUM(Faltas) FROM SEMIUCL WHERE Equipo IN ("Manchester City", "Real Madrid", "Paris Saint-Germain", "Chelsea")  GROUP BY Equipo')
+
+# Calcular las estadisticas por equipo
+
+RM = ['Real Madrid']
+data_UEFA_semi_RM = data_UEFA_semi[data_UEFA_semi.Equipo.isin(RM)]
+#print(data_UEFA_semi_RM['Pases'].corr(data_UEFA_semi_RM['Score']))
+#print(data_UEFA_semi_RM['Pases'].corr(data_UEFA_semi_RM['Remate']))
+#print(data_UEFA_semi_RM['Pases'].corr(data_UEFA_semi_RM['Remate_arco']))
+#print(data_UEFA_semi_RM['Pases'].corr(data_UEFA_semi_RM['Faltas']))
+
+MC = ['Manchester City']
+data_UEFA_semi_MC = data_UEFA_semi[data_UEFA_semi.Equipo.isin(MC)]
+# Sale Nan en MC porque siempre han metido 2 goles.
+#print(data_UEFA_semi_MC['Pases'].corr(data_UEFA_semi_MC['Score']))
+#print(data_UEFA_semi_MC['Pases'].corr(data_UEFA_semi_MC['Remate']))
+#print(data_UEFA_semi_MC['Pases'].corr(data_UEFA_semi_MC['Remate_arco']))
+#print(data_UEFA_semi_MC['Pases'].corr(data_UEFA_semi_MC['Faltas']))
 
 
-RM = 'Real Madrid'
-MC = 'Manchester City'
-CH = 'Chelsea'
-PSG = 'Paris Saint-Germain'
+CH = ['Chelsea']
+data_UEFA_semi_CH = data_UEFA_semi[data_UEFA_semi.Equipo.isin(CH)]
+#print(data_UEFA_semi_CH['Pases'].corr(data_UEFA_semi_CH['Score']))
+#print(data_UEFA_semi_CH['Pases'].corr(data_UEFA_semi_CH['Remate']))
+#print(data_UEFA_semi_CH['Pases'].corr(data_UEFA_semi_CH['Remate_arco']))
+#print(data_UEFA_semi_CH['Pases'].corr(data_UEFA_semi_CH['Faltas']))
+
+PSG = ['Paris Saint-Germain']
+data_UEFA_semi_PSG = data_UEFA_semi[data_UEFA_semi.Equipo.isin(PSG)]
+#print(data_UEFA_semi_PSG['Pases'].corr(data_UEFA_semi_PSG['Score']))
+#print(data_UEFA_semi_PSG['Pases'].corr(data_UEFA_semi_PSG['Remate']))
+#print(data_UEFA_semi_PSG['Pases'].corr(data_UEFA_semi_PSG['Remate_arco']))
+#print(data_UEFA_semi_PSG['Pases'].corr(data_UEFA_semi_PSG['Faltas']))
+
 
 
 
