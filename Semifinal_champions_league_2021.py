@@ -44,13 +44,15 @@ sns.barplot(x='Equipo', y='Score', data = data_UEFA_semi_4equip, estimator = sum
 plt.title('')
 plt.xlabel('')
 plt.ylabel('Total de Goles')
-plt.show()
+plt.savefig('UEFA_equipo_goles.png')
+#plt.show()
 
 sns.barplot(x='Equipo', y='Remate', data = data_UEFA_semi_4equip, estimator = sum, ci=None)
 plt.title('')
 plt.xlabel('')
 plt.ylabel('Total de remates')
-plt.show()
+plt.savefig('UEFA_equipo_remates')
+#plt.show()
 
 # Calcular las estadisticas por equipo
 
