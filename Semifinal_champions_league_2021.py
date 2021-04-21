@@ -33,7 +33,7 @@ data_UEFA_semi.to_sql('SEMIUCL', conn, if_exists= 'replace', index = True)
 
 #cur.execute('SELECT Equipo, AVG(Score), AVG(Pases),  AVG(Remate), AVG(Remate_arco), AVG(Faltas) FROM SEMIUCL GROUP BY Equipo ORDER BY AVG(Pases) DESC')
 #cur.execute('SELECT Equipo, AVG(Pases), AVG(Remate) AS rem, AVG(Remate_arco) FROM SEMIUCL GROUP BY Equipo ORDER BY rem DESC')
-cur.execute('SELECT Equipo, SUM(Score), SUM(Remate), SUM(Remate_arco), SUM(Faltas) FROM SEMIUCL WHERE Equipo IN ("Manchester City", "Real Madrid", "Paris Saint-Germain", "Chelsea")  GROUP BY Equipo')
+cur.execute('SELECT Equipo, SUM(Score), SUM(Remate), SUM(Remate_arco), SUM(Pases), SUM(Faltas)  FROM SEMIUCL WHERE Equipo IN ("Manchester City", "Real Madrid", "Paris Saint-Germain", "Chelsea")  GROUP BY Equipo')
 
 # Calcular las estadisticas por equipo
 
