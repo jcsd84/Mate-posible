@@ -1,5 +1,7 @@
 import pandas as pd
 import sqlite3 as sq3
+import matplotlib.pyplot as plt
+import seaborn as sns
 
 conn = sq3.connect('UCL_semifinal.sqlite')
 cur = conn.cursor()
@@ -14,14 +16,12 @@ data_UEFA_semi['Prop_remates_certeros'] = data_UEFA_semi['Remate_arco']/data_UEF
 
 data_UEFA_semi.to_sql('SEMIUCL', conn, if_exists= 'replace', index = True)
 
-#print(data_UEFA_semi['Score'].mean())
-#print(data_UEFA_semi['Remate'].mean())
-#print(data_UEFA_semi['Remate_arco'].mean())
-#print(data_UEFA_semi['Pases'].mean())
-#print(data_UEFA_semi['Faltas'].mean())
-#print(data_UEFA_semi['Corners'].mean())
-
 # Calculos generales, correlaciones con todos los equipos.
+
+# Calcular equipos con mayor promedio de pases, goles, remates y faltas.
+
+#cur.execute('SELECT Equipo, AVG(Score), AVG(Pases),  AVG(Remate), AVG(Remate_arco), AVG(Faltas) FROM SEMIUCL GROUP BY Equipo ORDER BY AVG(Pases) DESC')
+#cur.execute('SELECT Equipo, AVG(Pases), AVG(Remate) AS rem, AVG(Remate_arco) FROM SEMIUCL GROUP BY Equipo ORDER BY rem DESC')
 
 #print(data_UEFA_semi['Pases'].corr(data_UEFA_semi['Score']))
 #print(data_UEFA_semi['Pases'].corr(data_UEFA_semi['Remate']))
@@ -29,11 +29,28 @@ data_UEFA_semi.to_sql('SEMIUCL', conn, if_exists= 'replace', index = True)
 #print(data_UEFA_semi['Pases'].corr(data_UEFA_semi['Faltas']))
 #print(data_UEFA_semi['Pases'].corr(data_UEFA_semi['Corners']))
 
-# Calcular equipos con mayor promedio de pases, goles, remates y faltas.
+# Grafica de los 4 equipos que quedan
 
-#cur.execute('SELECT Equipo, AVG(Score), AVG(Pases),  AVG(Remate), AVG(Remate_arco), AVG(Faltas) FROM SEMIUCL GROUP BY Equipo ORDER BY AVG(Pases) DESC')
-#cur.execute('SELECT Equipo, AVG(Pases), AVG(Remate) AS rem, AVG(Remate_arco) FROM SEMIUCL GROUP BY Equipo ORDER BY rem DESC')
-cur.execute('SELECT Equipo, SUM(Score), SUM(Remate), SUM(Remate_arco), SUM(Pases), SUM(Faltas)  FROM SEMIUCL WHERE Equipo IN ("Manchester City", "Real Madrid", "Paris Saint-Germain", "Chelsea")  GROUP BY Equipo')
+# Descriptivos de los 4 equipos en semis
+cur.execute('SELECT Equipo, SUM(Score), SUM(Remate), SUM(Remate_arco), MIN(Prop_remates_certeros), MAX(Prop_remates_certeros), SUM(Pases), SUM(Faltas)  FROM SEMIUCL WHERE Equipo IN ("Manchester City", "Real Madrid", "Paris Saint-Germain", "Chelsea")  GROUP BY Equipo')
+
+
+Semis = ['Real Madrid', 'Manchester City', 'Chelsea', 'Paris Saint-Germain']
+#New_colors = ['Black','Grey','Blue','Red']
+data_UEFA_semi_4equip = data_UEFA_semi[data_UEFA_semi.Equipo.isin(Semis)]
+
+
+sns.barplot(x='Equipo', y='Score', data = data_UEFA_semi_4equip, estimator = sum, ci=None)
+plt.title('')
+plt.xlabel('')
+plt.ylabel('Total de Goles')
+plt.show()
+
+sns.barplot(x='Equipo', y='Remate', data = data_UEFA_semi_4equip, estimator = sum, ci=None)
+plt.title('')
+plt.xlabel('')
+plt.ylabel('Total de remates')
+plt.show()
 
 # Calcular las estadisticas por equipo
 
