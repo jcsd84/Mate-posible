@@ -8,10 +8,11 @@ cur = conn.cursor()
 
 cur.execute('DROP TABLE IF EXISTS SEMIUCL')
 
-cur.execute('CREATE TABLE SEMIUCL (Anho int, Fase nvarchar(50), Equipo nvarchar(50), Score int, Remate int, Remate_arco int,'
+cur.execute('CREATE TABLE SEMIUCL (Anho int, Partido int, Fase nvarchar(50), Equipo nvarchar(50), '
+            'Score int, Localia nvarchar(50), Resultado int, Remate int, Remate_arco int,'
             'Posesion number, Pases int, Precision_pases number, Faltas int, Corners int)')
 
-data_UEFA_semi = pd.read_csv("/Users/home/Documents/MP blog 2021/Data/UEFA champions league/data_2021_UCL_semif.csv")
+data_UEFA_semi = pd.read_csv("/Users/home/Documents/MP blog 2021/Data/UEFA champions league/data_2021_UCL_semif.csv", sep = '\t')
 data_UEFA_semi['Prop_remates_certeros'] = data_UEFA_semi['Remate_arco']/data_UEFA_semi['Remate']
 
 data_UEFA_semi.to_sql('SEMIUCL', conn, if_exists= 'replace', index = True)
@@ -44,15 +45,15 @@ sns.barplot(x='Equipo', y='Score', data = data_UEFA_semi_4equip, estimator = sum
 plt.title('')
 plt.xlabel('')
 plt.ylabel('Total de Goles')
-plt.savefig('UEFA_equipo_goles.png')
-#plt.show()
+#plt.savefig('UEFA_equipo_goles.png')
+plt.show()
 
 sns.barplot(x='Equipo', y='Remate', data = data_UEFA_semi_4equip, estimator = sum, ci=None)
 plt.title('')
 plt.xlabel('')
 plt.ylabel('Total de remates')
-plt.savefig('UEFA_equipo_remates')
-#plt.show()
+#plt.savefig('UEFA_equipo_remates')
+plt.show()
 
 # Calcular las estadisticas por equipo
 
@@ -85,8 +86,6 @@ data_UEFA_semi_PSG = data_UEFA_semi[data_UEFA_semi.Equipo.isin(PSG)]
 #print(data_UEFA_semi_PSG['Pases'].corr(data_UEFA_semi_PSG['Remate']))
 #print(data_UEFA_semi_PSG['Pases'].corr(data_UEFA_semi_PSG['Remate_arco']))
 #print(data_UEFA_semi_PSG['Pases'].corr(data_UEFA_semi_PSG['Faltas']))
-
-
 
 
 for row in cur.fetchall():
