@@ -21,7 +21,9 @@ data_UEFA_semi.to_sql('SEMIUCL', conn, if_exists= 'replace', index = True)
 
 # Calcular equipos con mayor promedio de pases, goles, remates y faltas.
 
-#cur.execute('SELECT Equipo, AVG(Score), AVG(Pases),  AVG(Remate), AVG(Remate_arco), AVG(Faltas) FROM SEMIUCL GROUP BY Equipo ORDER BY AVG(Pases) DESC')
+#cur.execute('SELECT AVG(Pases), AVG(Remate), AVG(Remate_arco), AVG(Faltas) FROM SEMIUCL')
+#cur.execute('SELECT MIN(Pases), MAX(Pases), MIN(Remate), MAX(Remate), MIN(Remate_arco), MAX(Remate_arco), MIN(Faltas), MAX(Faltas) FROM SEMIUCL')
+cur.execute('SELECT Equipo, AVG(Score), AVG(Pases),  AVG(Remate), AVG(Remate_arco), AVG(Faltas) FROM SEMIUCL GROUP BY Equipo ORDER BY AVG(Pases) DESC')
 #cur.execute('SELECT Equipo, AVG(Pases), AVG(Remate) AS rem, AVG(Remate_arco) FROM SEMIUCL GROUP BY Equipo ORDER BY rem DESC')
 
 #print(data_UEFA_semi['Pases'].corr(data_UEFA_semi['Score']))
@@ -33,7 +35,7 @@ data_UEFA_semi.to_sql('SEMIUCL', conn, if_exists= 'replace', index = True)
 # Grafica de los 4 equipos que quedan
 
 # Descriptivos de los 4 equipos en semis
-cur.execute('SELECT Equipo, SUM(Score), SUM(Remate), SUM(Remate_arco), MIN(Prop_remates_certeros), MAX(Prop_remates_certeros), SUM(Pases), SUM(Faltas)  FROM SEMIUCL WHERE Equipo IN ("Manchester City", "Real Madrid", "Paris Saint-Germain", "Chelsea")  GROUP BY Equipo')
+#cur.execute('SELECT Equipo, SUM(Score), SUM(Remate), SUM(Remate_arco), MIN(Prop_remates_certeros), MAX(Prop_remates_certeros), SUM(Pases), SUM(Faltas), MIN(Posesion), MAX(Posesion)  FROM SEMIUCL WHERE Equipo IN ("Manchester City", "Real Madrid", "Paris Saint-Germain", "Chelsea")  GROUP BY Equipo')
 
 
 Semis = ['Real Madrid', 'Manchester City', 'Chelsea', 'Paris Saint-Germain']
