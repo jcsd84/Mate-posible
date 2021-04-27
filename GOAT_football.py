@@ -26,8 +26,8 @@ plt.legend(bbox_to_anchor=(1.01, 1),borderaxespad=0)
 plt.xlabel("")
 plt.ylabel('Proporcion de goles por partido en Liga')
 plt.xticks(rotation=90)
-#plt.show()
-plt.savefig('GOAT_goals_season.png')
+plt.show()
+#plt.savefig('GOAT_goals_season.png')
 
 #sns.lineplot(x = "Anho", y = "Prop_asistencias_Partido",
 #             data=data_goat_Liga, hue="Jugador")
@@ -38,9 +38,9 @@ plt.savefig('GOAT_goals_season.png')
 #plt.show()
 
 
-#data_goat.to_sql('GOAT', conn, if_exists= 'replace', index=True)
+data_goat.to_sql('GOAT', conn, if_exists= 'replace', index=True)
 
-#cur.execute('SELECT Jugador, Certamen, Equipo FROM GOAT GROUP BY Jugador, Certamen, Equipo')
+cur.execute('SELECT Jugador, Certamen, Equipo FROM GOAT GROUP BY Jugador, Certamen, Equipo')
 #cur.execute('SELECT Jugador, SUM(Partidos), SUM(Goles), SUM(Asistencia) FROM GOAT GROUP BY Jugador')
 #cur.execute('SELECT Jugador, SUM(Partidos), SUM(Goles), SUM(Asistencia) FROM GOAT WHERE Certamen = "Mundial" GROUP BY Jugador')
 #cur.execute('SELECT Jugador, SUM(Partidos), SUM(Goles), SUM(Asistencia) FROM GOAT WHERE Certamen = "Copa America" GROUP BY Jugador')
