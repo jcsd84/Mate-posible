@@ -11,7 +11,7 @@ cur.execute('DROP TABLE IF EXISTS GOAT')
 cur.execute('CREATE TABLE GOAT (Jugador nvarchar(50), Equipo nvarchar(50), Anho nvarchar(50), Certamen nvarchar(50),'
             'Partidos int, Goles int, Asistencia int, Prop_Goles_Partido number, Prop_asistencias_Partido number)')
 
-data_goat = pd.read_csv('/Users/home/Documents/MP blog 2021/Pele_maradona_Messi_recode.csv')
+data_goat = pd.read_csv('/Users/home/Documents/MP blog 2021/Data/GOAT/Pele_maradona_Messi_recode.csv')
 data_goat['Prop_Goles_Partido'] = data_goat['Goles']/data_goat['Partidos']
 data_goat['Prop_asistencias_Partido'] = data_goat['Asistencia']/data_goat['Partidos']
 #print(data_goat['Prop_Goles_Partido'])
