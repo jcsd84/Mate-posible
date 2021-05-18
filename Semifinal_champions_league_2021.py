@@ -12,7 +12,7 @@ cur.execute('CREATE TABLE SEMIUCL (Anho int, Partido int, Fase nvarchar(50), Equ
             'Score int, Localia nvarchar(50), Resultado int, Remate int, Remate_arco int,'
             'Posesion number, Pases int, Precision_pases number, Faltas int, Corners int)')
 
-data_UEFA_semi = pd.read_csv("/Users/home/Documents/MP blog 2021/Data/UEFA champions league/data_2021_UCL_semif.csv", sep = '\t')
+data_UEFA_semi = pd.read_csv("/Users/home/Documents/MP blog 2021/Data/UEFA champions league/data_2021_UCL_semif.csv")
 data_UEFA_semi['Prop_remates_certeros'] = data_UEFA_semi['Remate_arco']/data_UEFA_semi['Remate']
 
 data_UEFA_semi.to_sql('SEMIUCL', conn, if_exists= 'replace', index = True)
@@ -35,7 +35,7 @@ data_UEFA_semi.to_sql('SEMIUCL', conn, if_exists= 'replace', index = True)
 # Grafica de los 4 equipos que quedan
 
 # Descriptivos de los 4 equipos en semis
-cur.execute('SELECT Equipo, SUM(Score), SUM(Remate), SUM(Remate_arco), MIN(Prop_remates_certeros), MAX(Prop_remates_certeros), SUM(Pases), SUM(Faltas), MIN(Posesion), MAX(Posesion)  FROM SEMIUCL WHERE Equipo IN ("Manchester City", "Real Madrid", "Paris Saint-Germain", "Chelsea")  GROUP BY Equipo')
+#cur.execute('SELECT Equipo, COUNT(Equipo), SUM(Score), SUM(Remate), SUM(Remate_arco), SUM(Pases), AVG(Pases), SUM(Faltas), MIN(Posesion), MAX(Posesion)  FROM SEMIUCL WHERE Equipo IN ("Manchester City", "Real Madrid", "Paris Saint-Germain", "Chelsea")  GROUP BY Equipo')
 
 
 Semis = ['Real Madrid', 'Manchester City', 'Chelsea', 'Paris Saint-Germain']
@@ -43,19 +43,19 @@ Semis = ['Real Madrid', 'Manchester City', 'Chelsea', 'Paris Saint-Germain']
 data_UEFA_semi_4equip = data_UEFA_semi[data_UEFA_semi.Equipo.isin(Semis)]
 
 
-sns.barplot(x='Equipo', y='Score', data = data_UEFA_semi_4equip, estimator = sum, ci=None)
-plt.title('')
-plt.xlabel('')
-plt.ylabel('Total de Goles')
+#sns.barplot(x='Equipo', y='Score', data = data_UEFA_semi_4equip, estimator = sum, ci=None)
+#plt.title('')
+#plt.xlabel('')
+#plt.ylabel('Total de Goles')
 #plt.savefig('UEFA_equipo_goles.png')
-plt.show()
+#plt.show()
 
-sns.barplot(x='Equipo', y='Remate', data = data_UEFA_semi_4equip, estimator = sum, ci=None)
-plt.title('')
-plt.xlabel('')
-plt.ylabel('Total de remates')
+#sns.barplot(x='Equipo', y='Remate', data = data_UEFA_semi_4equip, estimator = sum, ci=None)
+#plt.title('')
+#plt.xlabel('')
+#plt.ylabel('Total de remates')
 #plt.savefig('UEFA_equipo_remates')
-plt.show()
+#plt.show()
 
 # Calcular las estadisticas por equipo
 
