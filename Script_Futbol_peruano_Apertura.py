@@ -62,7 +62,7 @@ plt.show()
 data_apertura.to_sql('Futbol_peruano', conn, if_exists='replace', index=True)
 
 cur.execute('SELECT Equipos, ROUND(AVG(Score),2), ROUND(AVG(Pases),2), ROUND(AVG(Remate_arco),2), ROUND(AVG(Faltas),2), MIN(Posesion), MAX(Posesion)  FROM Futbol_peruano WHERE Equipos IN ("Alianza Lima", "Universitario", "Sporting Cristal") GROUP BY Equipos')
-
+cur.execute('SELECT Equipos, SUM(Score), SUM(Remate), SUM(Remate_arco) FROM Futbol_peruano WHERE Equipos IN ("Alianza Lima", "Universitario", "Sporting Cristal") GROUP BY Equipos')
 
 
 for row in cur.fetchall():
