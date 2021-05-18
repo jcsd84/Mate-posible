@@ -59,7 +59,9 @@ plt.ylabel("Goles")
 plt.xticks(rotation=90)
 plt.show()
 
-#data_apertura.to_sql('Futbol_peruano', conn, if_exists='replace', index=True)
+data_apertura.to_sql('Futbol_peruano', conn, if_exists='replace', index=True)
+
+cur.execute('SELECT Equipos, ROUND(AVG(Score),2), ROUND(AVG(Pases),2), ROUND(AVG(Remate_arco),2), ROUND(AVG(Faltas),2), MIN(Posesion), MAX(Posesion)  FROM Futbol_peruano WHERE Equipos IN ("Alianza Lima", "Universitario", "Sporting Cristal") GROUP BY Equipos')
 
 
 
