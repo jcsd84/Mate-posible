@@ -13,7 +13,7 @@ cur.execute('CREATE TABLE Futbol_peruano (Fecha int, Match int, Equipos nvarchar
             'Faltas int, Corners int)')
 
 
-data_apertura = pd.read_csv("/Users/home/Documents/MP blog 2021/Data/Peru/Matches_2021_peru.csv", sep='\t')
+data_apertura = pd.read_csv("/Users/home/Documents/MP blog 2021/Data/Peru/Matches_2021_peru.csv")
 
 #print(data_apertura['Score'].corr(data_apertura['Pases']))
 #print(data_apertura['Score'].corr(data_apertura['Remate']))
@@ -23,7 +23,7 @@ data_apertura = pd.read_csv("/Users/home/Documents/MP blog 2021/Data/Peru/Matche
 
 data_apertura.to_sql('Futbol_peruano', conn, if_exists='replace', index=True)
 
-cur.execute('SELECT COUNT(Equipos), SUM(Score), SUM(Remate), SUM(Remate_arco) FROM Futbol_peruano')
+#cur.execute('SELECT COUNT(Equipos), SUM(Score), SUM(Remate), SUM(Remate_arco) FROM Futbol_peruano')
 
 # Separar entre los equipos
 
@@ -64,8 +64,8 @@ data_apertura_SC = data_apertura[data_apertura.Equipos.isin(SC)]
 #plt.show()
 
 #cur.execute('SELECT Equipos, ROUND(AVG(Score),2), ROUND(AVG(Pases),2), ROUND(AVG(Remate_arco),2), ROUND(AVG(Faltas),2), MIN(Posesion), MAX(Posesion)  FROM Futbol_peruano WHERE Equipos IN ("Alianza Lima", "Universitario", "Sporting Cristal") GROUP BY Equipos')
-#cur.execute('SELECT Equipos, COUNT(Equipos), SUM(Score), SUM(Remate), SUM(Remate_arco) FROM Futbol_peruano WHERE Equipos IN ("Alianza Lima", "Universitario", "Sporting Cristal") GROUP BY Equipos')
-
+#cur.execute('SELECT Equipos, COUNT(Equipos), SUM(Score), SUM(Remate), SUM(Remate_arco), AVG(Pases), SUM(Faltas) FROM Futbol_peruano WHERE Equipos IN ("Alianza Lima", "Universitario", "Sporting Cristal") GROUP BY Equipos')
+#cur.execute('SELECT Equipos, SUM(Score), SUM(Remate), SUM(Remate_arco) AS rem_arc, ROUND(AVG(Pases),2), SUM(Faltas) FROM Futbol_peruano GROUP BY Equipos ORDER BY rem_arc DESC')
 
 for row in cur.fetchall():
     print(row)
