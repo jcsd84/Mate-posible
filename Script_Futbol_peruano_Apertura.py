@@ -21,24 +21,28 @@ data_apertura = pd.read_csv("/Users/home/Documents/MP blog 2021/Data/Peru/Matche
 #print(data_apertura['Remate'].corr(data_apertura['Pases']))
 #print(data_apertura['Remate_arco'].corr(data_apertura['Pases']))
 
+data_apertura.to_sql('Futbol_peruano', conn, if_exists='replace', index=True)
+
+cur.execute('SELECT COUNT(Equipos), SUM(Score), SUM(Remate), SUM(Remate_arco) FROM Futbol_peruano')
+
 # Separar entre los equipos
 
 #Alianza Lima
 
 AL = ['Alianza Lima']
 data_apertura_AL = data_apertura[data_apertura.Equipos.isin(AL)]
-print(data_apertura_AL['Score'].corr(data_apertura_AL['Pases']))
+#print(data_apertura_AL['Score'].corr(data_apertura_AL['Pases']))
 
 #Universitario
 
 Uni = ['Universitario']
 data_apertura_U = data_apertura[data_apertura.Equipos.isin(Uni)]
-print(data_apertura_U['Score'].corr(data_apertura_U['Pases']))
+#print(data_apertura_U['Score'].corr(data_apertura_U['Pases']))
 #Sporting Cristal
 
 SC = ['Sporting Cristal']
 data_apertura_SC = data_apertura[data_apertura.Equipos.isin(SC)]
-print(data_apertura_SC['Score'].corr(data_apertura_SC['Pases']))
+#print(data_apertura_SC['Score'].corr(data_apertura_SC['Pases']))
 
 
 
@@ -50,19 +54,17 @@ print(data_apertura_SC['Score'].corr(data_apertura_SC['Pases']))
 #plt.show()
 
 
-p = sns.lmplot(x='Pases', y = 'Remate_arco', data= data_apertura,
-        hue='Estado', markers =['o', 'v'])
-p._legend.remove()
-plt.legend(bbox_to_anchor=(1.01, 1),borderaxespad=0)
-plt.xlabel("Cantidad de pases")
-plt.ylabel("Goles")
-plt.xticks(rotation=90)
-plt.show()
+#p = sns.lmplot(x='Pases', y = 'Remate_arco', data= data_apertura,
+        #hue='Estado', markers =['o', 'v'])
+#p._legend.remove()
+#plt.legend(bbox_to_anchor=(1.01, 1),borderaxespad=0)
+#plt.xlabel("Cantidad de pases")
+#plt.ylabel("Goles")
+#plt.xticks(rotation=90)
+#plt.show()
 
-data_apertura.to_sql('Futbol_peruano', conn, if_exists='replace', index=True)
-
-cur.execute('SELECT Equipos, ROUND(AVG(Score),2), ROUND(AVG(Pases),2), ROUND(AVG(Remate_arco),2), ROUND(AVG(Faltas),2), MIN(Posesion), MAX(Posesion)  FROM Futbol_peruano WHERE Equipos IN ("Alianza Lima", "Universitario", "Sporting Cristal") GROUP BY Equipos')
-cur.execute('SELECT Equipos, COUNT(Equipos), SUM(Score), SUM(Remate), SUM(Remate_arco) FROM Futbol_peruano WHERE Equipos IN ("Alianza Lima", "Universitario", "Sporting Cristal") GROUP BY Equipos')
+#cur.execute('SELECT Equipos, ROUND(AVG(Score),2), ROUND(AVG(Pases),2), ROUND(AVG(Remate_arco),2), ROUND(AVG(Faltas),2), MIN(Posesion), MAX(Posesion)  FROM Futbol_peruano WHERE Equipos IN ("Alianza Lima", "Universitario", "Sporting Cristal") GROUP BY Equipos')
+#cur.execute('SELECT Equipos, COUNT(Equipos), SUM(Score), SUM(Remate), SUM(Remate_arco) FROM Futbol_peruano WHERE Equipos IN ("Alianza Lima", "Universitario", "Sporting Cristal") GROUP BY Equipos')
 
 
 for row in cur.fetchall():

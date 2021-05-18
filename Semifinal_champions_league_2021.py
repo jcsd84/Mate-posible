@@ -21,6 +21,8 @@ data_UEFA_semi.to_sql('SEMIUCL', conn, if_exists= 'replace', index = True)
 
 # Calcular equipos con mayor promedio de pases, goles, remates y faltas.
 
+cur.execute('SELECT COUNT(Equipo), SUM(Score), SUM(Remate), SUM(Remate_arco) FROM SEMIUCL')
+
 #cur.execute('SELECT AVG(Pases), AVG(Remate), AVG(Remate_arco), AVG(Faltas) FROM SEMIUCL')
 #cur.execute('SELECT MIN(Pases), MAX(Pases), MIN(Remate), MAX(Remate), MIN(Remate_arco), MAX(Remate_arco), MIN(Faltas), MAX(Faltas) FROM SEMIUCL')
 #cur.execute('SELECT Equipo, AVG(Score), AVG(Pases),  AVG(Remate), AVG(Remate_arco), AVG(Faltas) FROM SEMIUCL GROUP BY Equipo ORDER BY AVG(Pases) DESC')
