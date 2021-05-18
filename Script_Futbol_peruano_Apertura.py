@@ -15,6 +15,7 @@ cur.execute('CREATE TABLE Futbol_peruano (Fecha int, Match int, Equipos nvarchar
 
 data_apertura = pd.read_csv("/Users/home/Documents/MP blog 2021/Data/Peru/Matches_2021_peru.csv")
 
+print(data_apertura['Score'].corr(data_apertura['Pases']))
 
 
 data_apertura.to_sql('Futbol_peruano', conn, if_exists='replace', index=True)
