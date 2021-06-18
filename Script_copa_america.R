@@ -9,6 +9,7 @@ library(ggrepel)
 data_copa_america <- read_excel("/Users/home/Documents/MP blog 2021/Data/Copa America/Valor_nomina_ca_2021.xlsx")
 head(data_copa_america)
 
+data.frame(data_copa_america[order(-data_copa_america$Valor_nomina),])
 
 cor.test(data_copa_america$Ranking, data_copa_america$Valor_nomina)
 
@@ -32,5 +33,5 @@ figure1_ca <- ggplot(data_copa_america, aes(x=Ranking, y=Valor_nomina, label=Equ
   labs(x = "Ranking", y = "Valor nomina en millones")
 
 ggsave("Ranking_value_ca.png", plot =figure1_ca,
-       width = 10, height = 10, 
+       width = 8, height = 4, 
        limitsize = F)

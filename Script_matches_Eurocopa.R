@@ -6,10 +6,13 @@ library(ggplot2)
 library(ggrepel)
 
 data_eurocopa <- read_xlsx("/Users/home/Documents/MP blog 2021/Data/Eurocopa/Valor_nomina_euro_2021.xlsx")
-head(data_eurocopa)
+head(data_eurocopa, 10)
 
 summary(data_eurocopa$Valor_nomina)
 sd(data_eurocopa$Valor_nomina)
+
+data.frame(data_eurocopa[order(-data_eurocopa$Valor_nomina),])
+
 
 cor.test(data_eurocopa$Ranking, data_eurocopa$Valor_nomina)
 
@@ -29,6 +32,6 @@ figure1_euro <- ggplot(data_eurocopa, aes(x=Ranking, y=Valor_nomina, label=Equip
   scale_y_continuous(limits = c(1,1100), breaks = seq(1,1100, by = 100))+
   labs(x = "Ranking", y = "Valor nomina en millones")
 
-ggsave("WC_qualifiers_2018_pas_goals.png", plot =figure1,
-       width = 10, height = 10, 
+ggsave("Ranking_value_euro.png", plot =figure1_euro,
+       width = 8, height = 4, 
        limitsize = F)
