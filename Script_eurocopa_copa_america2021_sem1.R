@@ -5,6 +5,7 @@ library(dplyr)
 library(ggplot2)
 library(tidyr)
 
+
 # Cargar data de copa america
 
 ##### Copa America ####
@@ -51,8 +52,28 @@ data_resumen_CA$Pases_partido <- data_resumen_CA$Suma_Pases/data_resumen_CA$Part
 data_resumen_CA$Remates_partido <- data_resumen_CA$Suma_remates/data_resumen_CA$Partidos
 data_resumen_CA$Faltas_partido <- data_resumen_CA$Suma_Faltas/data_resumen_CA$Partidos
 
-# Sorpresas según Ranking FIFA Copa America
+#Diferencia de goles en Copa America
 
+data_dif_goles_CA <- group_by(data_par_nom_CA,
+                              Partido) %>% 
+  summarise(Equipo1 = first(Equipo),
+            Score1 = first(Score),
+            Equipo2 = last(Equipo),
+            Score2 = last(Score))
+
+data_dif_goles_CA$dif_goles <- abs(data_dif_goles_CA$Score1 - data_dif_goles_CA$Score2)
+
+#psych::describe(data_dif_goles_CA$dif_goles)
+
+CA <- ggplot(data_dif_goles_CA, aes(x=dif_goles)) + 
+  geom_histogram(binwidth =0.5,fill = "blue", color = "black")+
+       theme(panel.background = element_blank())+
+         labs(x= "Diferencia Goles", y = "Frecuencia") +
+  scale_x_continuous(breaks= c(0:5, 1)) +
+  scale_y_continuous(breaks = c(0:15)) +
+  ggtitle("Copa America")
+
+# Sorpresas según Ranking FIFA Copa America
 
 data_sorpresas_CA <- group_by(data_par_nom_CA,
                                 Partido) %>% 
@@ -66,6 +87,20 @@ data_sorpresas_CA <- group_by(data_par_nom_CA,
             Valor2 = last(Valor_nomina),
             Favorito = if_else(first(Ranking) < last(Ranking),paste0(first(Equipo)),paste0(last(Equipo))),
             Underdog = if_else(first(Ranking) > last(Ranking), paste0(first(Equipo)),paste0(last(Equipo))))
+
+# Juntar con la diferencia de goles
+
+data_dif_goles_CA_momentanea <- data_dif_goles_CA %>% 
+  dplyr::select(Partido, dif_goles)
+
+data_sorpresas_CA <- inner_join(data_sorpresas_CA, 
+                                data_dif_goles_CA_momentanea,
+                                by = "Partido")
+
+data_dif_goles_CA_momentanea <- NULL
+
+
+# Crear las variables para filtrar las sorpresas
 
 data_sorpresas_CA <- data_sorpresas_CA %>% 
   mutate(Ganador = case_when(
@@ -90,6 +125,7 @@ data_sorpresas_CA_msorpresa <- data_sorpresas_CA %>%
 
 data_sorpresas_CA_msorpresa$Dif_nomina <- data_sorpresas_CA_msorpresa$Valor1 - data_sorpresas_CA_msorpresa$Valor2
 
+
 ##### Eurocopa ####
 
 # Cargar data de Eurocopa
@@ -112,8 +148,6 @@ Prop_Goles025_EURO <- sum(data_par_nom_EURO$Goles_favor_0_20)/sum(data_par_nom_E
 Prop_Goles2645_EURO <- sum(data_par_nom_EURO$Goles_favor_20_45)/sum(data_par_nom_EURO$Score)
 Prop_Goles4570_EURO <- sum(data_par_nom_EURO$Goles_favor_45_65)/sum(data_par_nom_EURO$Score)
 Prop_Goles4570_EURO <- sum(data_par_nom_EURO$Goles_favor_65_90)/sum(data_par_nom_EURO$Score)
-
-
 
 summary(data_par_nom_EURO$Pases) # Pases
 summary(data_par_nom_EURO$Remate) # Remates
@@ -138,6 +172,28 @@ data_resumen_EURO$Pases_partido <- data_resumen_EURO$Suma_Pases/data_resumen_EUR
 data_resumen_EURO$Remates_partido <- data_resumen_EURO$Suma_remates/data_resumen_EURO$Partidos
 data_resumen_EURO$Faltas_partido <- data_resumen_EURO$Suma_Faltas/data_resumen_EURO$Partidos
 
+#Diferencia de goles en Eurocopa
+
+data_dif_goles_EURO <- group_by(data_par_nom_EURO,
+                              Partido) %>% 
+  summarise(Equipo1 = first(Equipo),
+            Score1 = first(Score),
+            Equipo2 = last(Equipo),
+            Score2 = last(Score))
+
+data_dif_goles_EURO$dif_goles <- abs(data_dif_goles_EURO$Score1 - data_dif_goles_EURO$Score2)
+
+#psych::describe(data_dif_goles_EURO$dif_goles)
+
+EURO <- ggplot(data_dif_goles_EURO, aes(x=dif_goles)) + 
+  geom_histogram(binwidth =0.5,fill = "grey", color = "black")+
+  theme(panel.background = element_blank())+
+  labs(x= "Diferencia Goles", y = "Frecuencia") +
+  scale_x_continuous(breaks=c(0:5, 1)) +
+  ggtitle("Eurocopa")
+
+
+
 # Sorpresas según Ranking FIFA EUROCOPA
 
 data_sorpresas_EURO <- group_by(data_par_nom_EURO,
@@ -152,6 +208,19 @@ data_sorpresas_EURO <- group_by(data_par_nom_EURO,
             Valor2 = last(Valor_nomina),
             Favorito = if_else(first(Ranking) < last(Ranking),paste0(first(Equipo)),paste0(last(Equipo))),
             Underdog = if_else(first(Ranking) > last(Ranking), paste0(first(Equipo)),paste0(last(Equipo))))
+
+# Juntar con la diferencia de goles
+
+data_dif_goles_EURO_momentanea <- data_dif_goles_EURO %>% 
+  dplyr::select(Partido, dif_goles)
+
+data_sorpresas_EURO <- inner_join(data_sorpresas_EURO, 
+                                data_dif_goles_EURO_momentanea,
+                                by = "Partido")
+
+data_dif_goles_EURO_momentanea <- NULL
+
+# Crear las variables para filtrar las sorpresas
 
 data_sorpresas_EURO <- data_sorpresas_EURO %>% 
   mutate(Ganador = case_when(
@@ -177,4 +246,14 @@ data_sorpresas_EURO_msorpresa <- data_sorpresas_EURO %>%
 data_sorpresas_EURO_sorpresa$Dif_nomina <- data_sorpresas_EURO_sorpresa$Valor1 - data_sorpresas_EURO_sorpresa$Valor2
   
 data_sorpresas_EURO_msorpresa$Dif_nomina <-  data_sorpresas_EURO_msorpresa$Valor1 - data_sorpresas_EURO_msorpresa$Valor2 
+
+#### Graficos histograma diferencia de goles
+
+Histogramas <- ggpubr::ggarrange(CA, EURO,
+                     labels = c("", ""),
+                     ncol = 2, nrow = 1)
+
+ggsave("histograma_diferencia.png", plot = Histogramas,
+       width = 7, height = 3, 
+       limitsize = F)
 
