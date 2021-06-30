@@ -70,7 +70,7 @@ CA <- ggplot(data_dif_goles_CA, aes(x=dif_goles)) +
        theme(panel.background = element_blank())+
          labs(x= "Diferencia Goles", y = "Frecuencia") +
   scale_x_continuous(breaks= c(0:5, 1)) +
-  scale_y_continuous(breaks = c(0:15)) +
+  scale_y_continuous(breaks = c(0:15,1)) +
   ggtitle("Copa America")
 
 # Sorpresas según Ranking FIFA Copa America
@@ -190,6 +190,7 @@ EURO <- ggplot(data_dif_goles_EURO, aes(x=dif_goles)) +
   theme(panel.background = element_blank())+
   labs(x= "Diferencia Goles", y = "Frecuencia") +
   scale_x_continuous(breaks=c(0:5, 1)) +
+  scale_y_continuous(breaks=c(0:15,1))
   ggtitle("Eurocopa")
 
 
