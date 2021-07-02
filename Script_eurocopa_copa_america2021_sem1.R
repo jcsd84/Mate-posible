@@ -70,7 +70,7 @@ CA <- ggplot(data_dif_goles_CA, aes(x=dif_goles)) +
        theme(panel.background = element_blank())+
          labs(x= "Diferencia Goles", y = "Frecuencia") +
   scale_x_continuous(breaks= c(0:5, 1)) +
-  scale_y_continuous(breaks = c(0:15,1)) +
+  scale_y_continuous(breaks = c(0:20,1)) +
   ggtitle("Copa America")
 
 # Sorpresas según Ranking FIFA Copa America
@@ -149,9 +149,9 @@ Prop_Goles2645_EURO <- sum(data_par_nom_EURO$Goles_favor_20_45)/sum(data_par_nom
 Prop_Goles4570_EURO <- sum(data_par_nom_EURO$Goles_favor_45_65)/sum(data_par_nom_EURO$Score)
 Prop_Goles4570_EURO <- sum(data_par_nom_EURO$Goles_favor_65_90)/sum(data_par_nom_EURO$Score)
 
-summary(data_par_nom_EURO$Pases) # Pases
-summary(data_par_nom_EURO$Remate) # Remates
-summary(data_par_nom_EURO$Faltas) #Faltas
+#summary(data_par_nom_EURO$Pases) # Pases
+#summary(data_par_nom_EURO$Remate) # Remates
+#summary(data_par_nom_EURO$Faltas) #Faltas
 
 
 # Descriptivos por equipo Eurocopa
@@ -190,7 +190,7 @@ EURO <- ggplot(data_dif_goles_EURO, aes(x=dif_goles)) +
   theme(panel.background = element_blank())+
   labs(x= "Diferencia Goles", y = "Frecuencia") +
   scale_x_continuous(breaks=c(0:5, 1)) +
-  scale_y_continuous(breaks=c(0:15,1))
+  scale_y_continuous(breaks=c(0:20,1))+
   ggtitle("Eurocopa")
 
 
