@@ -22,9 +22,12 @@ data_euro_breve = pd.DataFrame(data_euro, columns=['Anho', 'Partido', 'Fase',
 data_euro_breve.to_sql('Eurocopa_pfinal', conn, if_exists = 'replace', index = True)
 #print(data_euro_breve.head())
 
-#cur.execute('SELECT Rival, SUM(Score) AS goles_contra, SUM(Remate), SUM(Remate_arco) FROM Eurocopa_previa_final WHERE Rival IN ("Inglaterra","Dinamarca", "Italia", "España") GROUP BY Rival ORDER BY goles_contra')
+#cur.execute('SELECT Rival, SUM(Score) AS goles_contra, SUM(Remate), SUM(Remate_arco), SUM(Faltas) FROM Eurocopa_previa_final WHERE Rival IN ("Inglaterra","Dinamarca", "Italia", "España") GROUP BY Rival ORDER BY goles_contra')
 #cur.execute('SELECT Equipo, SUM(Score) AS goles_favor, SUM(Remate), SUM(Remate_arco), SUM(Faltas), AVG(Pases) FROM Eurocopa_previa_final WHERE Equipo IN ("Inglaterra","Dinamarca", "Italia", "España") GROUP BY Equipo ORDER BY goles_favor DESC')
-cur.execute('SELECT Equipo, AVG(Pases) FROM Eurocopa_pfinal WHERE Equipo IN ("Inglaterra","Dinamarca", "Italia", "España") GROUP BY Equipo')
+#cur.execute('SELECT Equipo, AVG(Pases) FROM Eurocopa_pfinal WHERE Equipo IN ("Inglaterra","Dinamarca", "Italia", "España") GROUP BY Equipo')
+#cur.execute('SELECT Rival, SUM(Score) AS goles_contra, SUM(Remate), SUM(Remate_arco), AVG(Remate_arco) FROM Eurocopa_previa_final GROUP BY Rival ORDER BY goles_contra')
+#cur.execute('SELECT Equipo, SUM(Score) AS goles_favor, SUM(Remate), SUM(Remate_arco), SUM(Faltas), AVG(Pases) FROM Eurocopa_previa_final GROUP BY Equipo ORDER BY goles_favor DESC')
+#cur.execute('SELECT AVG(Faltas) FROM Eurocopa_previa_final')
 
 for row in cur.fetchall():
     print(row)
